@@ -1,0 +1,19 @@
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environment folders
+env/
+venv/
+.venv/
+
+# Ignore large data and output directories
+data/
+outputs/
+
+# Ignore macOS system files
+.DS_Store
+
+
+
