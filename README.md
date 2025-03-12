@@ -128,7 +128,7 @@ Each script will generate output files in the designated directories.
 The project directory is organized as follows:
 
 ```
-Metabolic_Graphs_AD_Predictions/
+Explainable-Graph-theoretical-Machine-Learning/
 ├── scripts/
 │   ├── constructing_metabolic_similarity_graphs.py       
 │   ├── KernelSVR_BP_top_10_edges.py
