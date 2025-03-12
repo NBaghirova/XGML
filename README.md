@@ -21,6 +21,7 @@ A Python repository for Explainable Graph-Theoretical Machine Learning (XGML), a
 We apply XGML to Alzheimer’s Disease (AD) study. AD is a neurodegenerative disorder and the most common form of dementia. It severely impacts memory, cognition, and daily functioning. According to Alzheimer’s Research UK 2021, by 2050 the number of people affected by dementia are projected to reach 152 million globally with AD accounting for most cases. Early detection and accurate severity assessment are critical, as current treatments are most effective during the disease’s early stages.
 
 Cognitive scores, obtained from neuropsychological tests, play a crucial role in assessing various cognitive domains and providing insights into mental decline. However, these evaluations face several challenges, including susceptibility to subjective factors such as the individual’s education level, testing environment, and psychological states like mood and anxiety (M. Rosselli et al. 2022). In this Python repository, we provide scripts that leverage the XGML framework to construct metabolic distance graphs from FDG-PET scans in the Alzheimer's Disease Neuroimaging Initiative dataset. These scripts predict eight AD-related cognitive scores and identify subgraphs that are predictive of these scores in previously unseen subjects.
+
 ---
 
 ## Metabolic Graph Construction and Predictions
