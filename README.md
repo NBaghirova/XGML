@@ -18,9 +18,9 @@ A Python repository for Explainable Graph-Theoretical Machine Learning (XGML), a
 
 ## Introduction
 
-We apply XGML to Alzheimer’s Disease (AD) study. AD is a neurodegenerative disorder and the most common form of dementia. It severely impacts memory, cognition, and daily functioning. According to Alzheimer’s Research UK 2021, by 2050 the number of people affected by dementia are projected to reach 152 million globally with AD accounting for most cases. Early detection and accurate severity assessment are critical, as current treatments are most effective during the disease’s early stages.
+We apply XGML to Alzheimer’s Disease (AD) study. AD is a neurodegenerative disorder and the most common form of dementia. It severely impacts memory, cognition, and daily functioning. According to Alzheimer’s Research UK 2021, by 2050 the number of people affected by dementia is projected to reach 152 million globally with AD accounting for most cases. Early detection and accurate severity assessment are critical, as current treatments are most effective during the disease’s early stages.
 
-Cognitive scores, obtained from neuropsychological tests, play a crucial role in assessing various cognitive domains and providing insights into mental decline. However, these evaluations face several challenges, including susceptibility to subjective factors such as the individual’s education level, testing environment, and psychological states like mood and anxiety (M. Rosselli et al. 2022). In this Python repository, we provide scripts that leverage the XGML framework to construct metabolic distance graphs from FDG-PET scans in the Alzheimer's Disease Neuroimaging Initiative dataset. These scripts predict eight AD-related cognitive scores and identify subgraphs that are predictive of these scores in previously unseen subjects.
+In this Python repository, we provide scripts that leverage the XGML framework to construct metabolic distance graphs from FDG-PET scans in the Alzheimer's Disease Neuroimaging Initiative dataset. These scripts predict eight AD-related cognitive scores and identify subgraphs that are predictive of these scores in previously unseen subjects.
 
 ---
 
@@ -28,13 +28,9 @@ Cognitive scores, obtained from neuropsychological tests, play a crucial role in
 
 1. The *constructing_metabolic_similarity_graphs.py* script constructs metabolic similarity graphs from FDG-PET scans for each patient.
 
-**Metabolic Similarity Graphs Construction**
+First, the script scans a directory to locate FDG-PET images that match a specified file suffix. Then, it loads a brain atlas, more specifically, we utilized a pre-processed Schaefer 2018 atlas with 200 brain regions, which is dimensionally aligned with the pre-processed FDG-PET scans. For each identified by the atlas brain region, the script extracts intensity values from the PET images. Further, Kernel Density Estimation (KDE) is applied to model the probability distribution of intensity values within each brain region. Then, Dynamic Time Warping (DTW) algorithm is applied to compute the similarity between KDE distributions of all pairs of brain regions. Thus, for each patient and their corresponding FDG-PET scan, the metabolic similarity graph is constructed as follows. The vertices of a graph represent brain regions. The graph forms a clique (every pair of vertices is adjacent). Edges are weighted by the DTW similarity scores between corresponding regions. Finally, the computed similarity values are stored in a CSV file for further analysis.
 
-First, the script scans a directory to locate FDG-PET images that match a specified file suffix. Then, it loads a brain atlas, more specifically, we utilized a pre-processed Schaefer 2018 atlas with 200 brain regions and 7 Networks, which is dimensionally aligned with the pre-processed FDG-PET scans. For each identified by the atlas brain region, the script extracts intensity values from the PET images. Further, Kernel Density Estimation (KDE) is applied to model the probability distribution of intensity values within each brain region. Then, Dynamic Time Warping (DTW) algorithm is applied to compute the similarity between KDE distributions of all pairs of brain regions. Thus, for each patient and their corresponding FDG-PET scan, the metabolic similarity graph is constructed as follows. The vertices of a graph represent brain regions. The graph forms a clique (every pair of vertices is adjacent). Edges are weighted by the DTW similarity scores between corresponding regions. Finally, the computed similarity values are stored in a CSV file for further analysis.
-
-2. The *KernelSVR_BP_top_10_edges.py* script applies the Kernel SVR model to predict cognitive scores and identifies the top 10 most predictive edges in the metabolic similarity graphs for each cognitive score.
-
-**Identifying the Most Predictive Edges**
+2. The *KernelSVR_top_10_edges.py* script applies the Kernel SVR model to predict cognitive scores and identifies subgraphs that are predictive of each of the cognitive scores in previously unseen subjects.
 
 First, the script loads the metabolic similarity graphs and cognitive scores, ensuring consistency in subject data. Each similarity graph is vectorized by extracting the upper triangular values, forming the feature set, while cognitive scores serve as target variables.
 
@@ -53,7 +49,7 @@ The outputs repository includes two folders:
 1. top_10_predictive_edges/ – Contains eight CSV files, each containing the top 10 most predictive edges for one of the cognitive scores. These edges represent the most important connections identified by the model.
 2. true_vs_predicted/ – Contains eight CSV files, each storing the true vs. predicted cognitive scores for all subjects. These files provide values of the model’s predictions and actual cognitive scores.
 
-All output files were generated using the scrips provided and the dataset used in the study.
+All output files were generated using the scripts provided and the dataset used in the study.
 
 ---
 
@@ -96,12 +92,7 @@ Follow these steps to set up and run the repository on your computer:
 
 **1. Clone the Repository**
 
-First, clone this GitHub repository to your local system using:
-
-```
-git clone https://github.com/NBaghirova/Explainable-Graph-theoretical-Machine-Learning.git
-cd Explainable-Graph-theoretical-Machine-Learning
-```
+First, clone this GitHub repository to your local system.
 
 **2. Install Dependencies**
 
@@ -162,7 +153,6 @@ Metabolic_Graphs_AD_Predictions/
 │   │   ├──RAVLT_perc_forgetting_ytrue_ypred.csv
 ├── README.md         
 └── requirements.txt
-└── LICENSE   
 ```
 ---
 ## Usage
@@ -177,14 +167,14 @@ Run the *constructing_metabolic_similarity_graphs.py* script to generate metabol
 python constructing_metabolic_similarity_graphs.py 
 ```
 
-Ensure that the paths to the FDG-PET scans and brain atlas are correctly set in the script. Additionally, ensure that the scans are dimensionally aligned with the atlas
+Ensure that the paths to the FDG-PET scans and brain atlas are correctly set in the script. Additionally, ensure that the scans are dimensionally aligned with the atlas.
 
 Expected Output: CSV files containing similarity matrices for each patient, stored in the specified directory.
 
 
 **2. Identify the Top 10 Most Predictive Edges**
 
-Run the *KernelSVR_BP_top_10_edges.py* script to determine the most important edges in the metabolic similarity graphs for predicting each cognitive score. This script applies permutation importance to identify the top 10 most predictive edges for each cognitive score.
+Run the *KernelSVR_top_10_edges.py* script to determine the most important edges in the metabolic similarity graphs for predicting each cognitive score. This script applies permutation importance to identify the top 10 most predictive edges for each cognitive score.
 
 ```
 python KernelSVR_BP_top_10_edges.py
