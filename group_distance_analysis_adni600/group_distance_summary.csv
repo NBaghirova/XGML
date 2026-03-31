@@ -1,0 +1,4 @@
+group,n_subjects_loaded,average_normalized_distance_all_entries,average_normalized_distance_upper_triangle,edges_above_0.50,edges_above_0.60,edges_above_0.65,edges_above_0.70,edges_above_0.75,edges_above_0.80
+CN,200,0.21320750937064945,0.21427890389009996,506,150,65,27,10,7
+MCI,200,0.22080884537901865,0.22191843756685292,154,56,38,22,3,0
+AD,200,0.14387392020938905,0.14459690473305434,28,8,5,3,1,1

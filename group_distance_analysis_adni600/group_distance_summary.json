@@ -1,0 +1,48 @@
+{
+  "normalization": {
+    "type": "global_minmax_across_all_groups",
+    "global_min": 0.0,
+    "global_max": 86.57006018805522,
+    "groups": [
+      "CN",
+      "MCI",
+      "AD"
+    ]
+  },
+  "CN": {
+    "group": "CN",
+    "n_subjects_loaded": 200,
+    "average_normalized_distance_all_entries": 0.21320750937064945,
+    "average_normalized_distance_upper_triangle": 0.21427890389009996,
+    "edges_above_0.50": 506,
+    "edges_above_0.60": 150,
+    "edges_above_0.65": 65,
+    "edges_above_0.70": 27,
+    "edges_above_0.75": 10,
+    "edges_above_0.80": 7
+  },
+  "MCI": {
+    "group": "MCI",
+    "n_subjects_loaded": 200,
+    "average_normalized_distance_all_entries": 0.22080884537901865,
+    "average_normalized_distance_upper_triangle": 0.22191843756685292,
+    "edges_above_0.50": 154,
+    "edges_above_0.60": 56,
+    "edges_above_0.65": 38,
+    "edges_above_0.70": 22,
+    "edges_above_0.75": 3,
+    "edges_above_0.80": 0
+  },
+  "AD": {
+    "group": "AD",
+    "n_subjects_loaded": 200,
+    "average_normalized_distance_all_entries": 0.14387392020938905,
+    "average_normalized_distance_upper_triangle": 0.14459690473305434,
+    "edges_above_0.50": 28,
+    "edges_above_0.60": 8,
+    "edges_above_0.65": 5,
+    "edges_above_0.70": 3,
+    "edges_above_0.75": 1,
+    "edges_above_0.80": 1
+  }
+}
