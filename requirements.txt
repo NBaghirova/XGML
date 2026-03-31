@@ -1,0 +1,32 @@
+# Requirements for XGML — Explainable Graph-theoretical Machine Learning
+# for Alzheimer's Disease Prediction
+#
+# Install with:
+#   pip install -r requirements.txt
+#
+# Python >= 3.10 required (uses union type hints: X | Y)
+
+# ---- NIfTI / neuroimaging ----
+nibabel>=4.0.0
+
+# ---- KDE ----
+KDEpy>=0.9.10
+
+# ---- DTW ----
+dtw-python>=1.3.0
+
+# ---- Numerics ----
+numpy>=1.24.0
+scipy>=1.10.0
+
+# ---- Data handling ----
+pandas>=2.0.0
+
+# ---- Machine learning ----
+scikit-learn>=1.3.0
+
+# ---- Hyperparameter tuning ----
+optuna>=3.2.0
+
+# ---- Plotting ----
+matplotlib>=3.7.0
